@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{user.username}}'s Page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <a href="/user/logout">Logout</a>
+            <div id="right-links">
+                <a href="/character/new">New Character</a>
+                <a href="/character/party">Edit Party</a>
+            </div>
+        </header>
+        <div id="not-links">
+            <div id="tools" class="inner-content">
+                <p>DM Tools</p>
+                <div id="toolbox">
+                    <a href="/character/combat">Combat Generator</a>
+                    <a href="">Example Tool</a>
+                    <a href="">Example Tool</a>
+                    <a href="">Example Tool</a>
+                </div>
+            </div>
+            <div id="party" class="inner-content">
+                <div id="top">
+                    <p>Party</p>
+                    <div id="partybox">
+                        {%if party in session%}
+                            {%for character in session['party']%}
+                            <a href="/character/show/{{character['id']}}">{{character['name']}}</a>
+                            {%endfor%}
+                        {%endif%}
+                    </div>
+                </div>
+                <div id="bottom">
+                    <p>Your Characters</p>
+                    <div id="personal">
+                        {%for character in characters%}
+                            {%if character['user_id'] == session['id']%}
+                                <a href="/character/show/{{character['id']}}">{{character['name']}}</a>
+                            {%endif%}
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+            <div id="characters" class="inner-content">
+                <p>All Characters</p>
+                <div id="character-box">
+                    {%for character in characters%}
+                        <a href="/character/show/{{character['id']}}">{{character['name']}}</a>
+                    {%endfor%}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{character['name']}}'s Page</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="core">
+            <div id="base">
+                <p>Name: {{character['name']}}</p>
+                <p>Race: {{character['race']}}</p>
+                <p>Class: {{character['characterClass']}} {{character['level']}}</p>
+            </div>
+            <div id="stats">
+                <p>Strength: {{character['str']}}</p>
+                <p>Dexterity: {{character['dex']}}</p>
+                <p>Constitution: {{character['con']}}</p>
+                <p>Wisdom: {{character['wis']}}</p>
+                <p>Intelligence: {{character['int']}}</p>
+                <p>Charisma: {{character['cha']}}</p>
+            </div>
+        </div>
+        <div id="health">
+            <p>HP</p>
+            <p>{{character['hp']}}</p>
+        </div>
+        <div id="profs">
+            <div id="names">
+                <p>Athletics:</p>
+                <p>Acrobatics:</p>
+                <p>Sleight of Hand:</p>
+                <p>Stealth:</p>
+                <p>Arcana:</p>
+                <p>History:</p>
+                <p>Investigation:</p>
+                <p>Nature:</p>
+                <p>Religion:</p>
+                <p>Animal Handling:</p>
+                <p>Insight:</p>
+                <p>Medicine:</p>
+                <p>Perception:</p>
+                <p>Survival:</p>
+                <p>Deception:</p>
+                <p>Intimidation:</p>
+                <p>Performance:</p>
+                <p>Persuasion:</p>
+            </div>
+            <div id="values">
+                {%for skill in character['skills']%}
+                    <p>{{skill}}</p>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

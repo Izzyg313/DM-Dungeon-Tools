@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Player</title>
+</head>
+<body>
+    <div id="wrapper">
+        <header><h1>Make A New Player</h1></header>
+        <form action="/user/create" method="post" enctype="multipart/form-data">
+            <div class="label">
+                <label for="username">Username:</label>
+            </div>
+            <div class="input">
+                <input type="text" name="username" required>
+            </div>
+            <input type="file" name="profile_picture" accept="image/*" required>
+            <button>Create Player</button>
+        </form>
+    </div>
+</body>
+</html>

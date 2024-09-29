@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Character</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='new.css') }}">
+</head>
+<!-- Change proficiency in DB into level you can use code to determine proficinecy based on that  -->
+<body>
+    <div id="wrapper">
+        <header>
+            <a href="/user/logout"><button>Logout</button></a>
+            <a href="/home"><button>Go Back</button></a>
+        </header>
+        <form action="/character/create" method="post">
+            <input type="hidden" name="user_id" value="{{session['id']}}">
+            <div id="core">
+                <div id="atts">
+                    <div class="input">
+                        <label for="name">Name</label>
+                        <input type="text" name="name">
+                    </div>
+                    <div class="input">
+                        <label for="race">Race</label>
+                        <input type="text" name="race">
+                    </div>
+                    <div class="input">
+                        <label for="characterClass">Class</label>
+                        <input type="text" name="characterClass">
+                    </div>
+                    <div class="input">
+                        <label for="level">Level</label>
+                        <input type="number" name="level">
+                    </div>
+                </div>
+                <div id="stats">
+                    <div class="input">
+                        <label for="str">Strength</label>
+                        <input type="number" name="str">
+                    </div>
+                    <div class="input">
+                        <label for="dex">Dexterity</label>
+                        <input type="number" name="dex">
+                    </div>
+                    <div class="input">
+                        <label for="con">Constitution</label>
+                        <input type="number" name="con">
+                    </div>
+                    <div class="input">
+                        <label for="wis">Wisdom</label>
+                        <input type="number" name="wis">
+                    </div>
+                    <div class="input">
+                        <label for="int">Intelligence</label>
+                        <input type="number" name="int">
+                    </div>
+                    <div class="input">
+                        <label for="cha">Charisma</label>
+                        <input type="number" name="cha">
+                    </div>
+                </div>
+            </div>
+            <div id="fortitude">
+                <div class="input">
+                    <label for="AC">AC</label>
+                    <input type="number" name="AC">
+                </div>
+                <div class="input">
+                    <label for="hp">HP</label>
+                    <input type="number" name="hp">
+                </div>
+            </div>
+            <div id="skills">
+                <div id="choice">
+                    <p id="yes">No</p>
+                    <p>Yes</p>
+                </div>
+                <div class="input">
+                    <label for="athletics">Athletics</label>
+                    <div class="radio">
+                        <input type="radio" name="athletics" value="0" checked="checked">
+                        <input type="radio" name="athletics" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="acrobatics">Acrobatics</label>
+                    <div class="radio">
+                        <input type="radio" name="acrobatics" value="0" checked="checked">
+                        <input type="radio" name="acrobatics" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="sleight_of_hand">Sleight of Hand</label>
+                    <div class="radio">
+                        <input type="radio" name="sleight_of_hand" value="0" checked="checked">
+                        <input type="radio" name="sleight_of_hand" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="stealth">Stealth</label>
+                    <div class="radio">
+                        <input type="radio" name="stealth" value="0" checked="checked">
+                        <input type="radio" name="stealth" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="arcana">Arcana</label>
+                    <div class="radio">
+                        <input type="radio" name="arcana" value="0" checked="checked">
+                        <input type="radio" name="arcana" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="history">History</label>
+                    <div class="radio">
+                        <input type="radio" name="history" value="0" checked="checked">
+                        <input type="radio" name="history" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="investigation">Investigation</label>
+                    <div class="radio">
+                        <input type="radio" name="investigation" value="0" checked="checked">
+                        <input type="radio" name="investigation" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="nature">Nature</label>
+                    <div class="radio">
+                        <input type="radio" name="nature" value="0" checked="checked">
+                        <input type="radio" name="nature" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="religion">Religion</label>
+                    <div class="radio">
+                        <input type="radio" name="religion" value="0" checked="checked">
+                        <input type="radio" name="religion" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="animal_handling">Animal Handling</label>
+                    <div class="radio">
+                        <input type="radio" name="animal_handling" value="0" checked="checked">
+                        <input type="radio" name="animal_handling" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="insight">Insight</label>
+                    <div class="radio">
+                        <input type="radio" name="insight" value="0" checked="checked">
+                        <input type="radio" name="insight" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="medicine">Medicine</label>
+                    <div class="radio">
+                        <input type="radio" name="medicine" value="0" checked="checked">
+                        <input type="radio" name="medicine" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="perception">Perception</label>
+                    <div class="radio">
+                        <input type="radio" name="perception" value="0" checked="checked">
+                        <input type="radio" name="perception" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="survival">Survival</label>
+                    <div class="radio">
+                        <input type="radio" name="survival" value="0" checked="checked">
+                        <input type="radio" name="survival" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="deception">Deception</label>
+                    <div class="radio">
+                        <input type="radio" name="deception" value="0" checked="checked">
+                        <input type="radio" name="deception" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="intimidation">Intimidation</label>
+                    <div class="radio">
+                        <input type="radio" name="intimidation" value="0" checked="checked">
+                        <input type="radio" name="intimidation" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="performance">Performance</label>
+                    <div class="radio">
+                        <input type="radio" name="performance" value="0" checked="checked">
+                        <input type="radio" name="performance" value="1">
+                    </div>
+                </div>
+                <div class="input">
+                    <label for="persuasion">Persuasion</label>
+                    <div class="radio">
+                        <input type="radio" name="persuasion" value="0" checked="checked">
+                        <input type="radio" name="persuasion" value="1">
+                    </div>
+                </div>
+                <button id="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

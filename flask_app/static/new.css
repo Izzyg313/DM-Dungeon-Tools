@@ -1,0 +1,67 @@
+#wrapper{
+    display: flex;
+    flex-direction: column;
+    margin: 60px auto;
+    align-items: center;
+    border: 2px solid black;
+    padding: 10px 30px;
+    width: 60%;
+}
+
+a{
+    text-decoration: none;
+    font-size: 16px;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 9%;
+    align-self: flex-end;
+    margin: 10px 35px 50px 0px;
+}
+form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+#core{
+    width: 17%;
+}
+.input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+}
+#atts, #stats{
+    margin: 0px 0px 15px 0px;
+    display: flex;
+    flex-direction: column;
+}
+#skills{
+    display: flex;
+    flex-direction: column;
+    width: 11%;
+}
+#choice{
+    width: 28%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-self: flex-end;
+    align-items: center;
+
+}
+#yes{
+    margin: 0px 5px 0px 0px;
+}
+#submit{
+    width: 50%;
+    align-self: flex-end;
+    margin: 20px 0px;
+}
