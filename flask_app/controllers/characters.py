@@ -22,8 +22,8 @@ def create_character():
 
 @app.route('/character/show/<int:id>')
 def show_character(id):
-    character = Character.get_one(id)
-    print(character['skills'])
+    data = Character.get_one(id)
+    character = Character(data)
     return render_template('show.html', character = character)
 
 @app.route('/character/combat')

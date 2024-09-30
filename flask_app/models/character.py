@@ -50,7 +50,7 @@ class Character:
     @classmethod
     def update_characters(cls, data):
         query = """ UPDATE characters
-                    SET name = %(name)s, race = %(race)s, type = %(type)s, str = %(str)s, dex = %(dex)s, con = %(con)s, wis = %(wis)s, int = %(int)s, cha = %(cha)s, hp = %(hp)s, temphp = %(temphp)s, armor = %(armor)s
+                    SET name = %(name)s, race = %(race)s, characterClass = %(characterClass)s, str = %(str)s, dex = %(dex)s, con = %(con)s, wis = %(wis)s, int = %(int)s, cha = %(cha)s, hp = %(hp)s, temphp = %(temphp)s, AC = %(AC)s
                     WHERE id = %(id)s
                 """
         result = connectToMySQL(cls.DB).query_db(query, data)
@@ -76,79 +76,20 @@ class Character:
             return 3
         else:
             return 2
+    
     def get_skills(self, profs, bonus):
+        skill_abilities = {
+            'athletics': 'str', 'acrobatics': 'dex', 'sleight_of_hand': 'dex', 
+            'stealth': 'dex', 'arcana': 'int', 'history': 'int', 
+            'investigation': 'int', 'nature': 'int', 'religion': 'int', 
+            'animal_handling': 'wis', 'insight': 'wis', 'medicine': 'wis', 
+            'perception': 'wis', 'survival': 'wis', 'deception': 'cha', 
+            'intimidation': 'cha', 'performance': 'cha', 'persuasion':'cha'
+        }
         skills = []
-        if profs['athletics'] == 1:
-            skills.append(self.ability['str'] + bonus)
-        else:
-            skills.append(self.ability['str'])
-        if profs['acrobatics'] == 1:
-            skills.append(self.ability['dex'] + bonus)
-        else:
-            skills.append(self.ability['dex'])
-        if profs['sleight_of_hand'] == 1:
-            skills.append(self.ability['dex'] + bonus)
-        else:
-            skills.append(self.ability['dex'])
-        if profs['stealth'] == 1:
-            skills.append(self.ability['dex'] + bonus)
-        else:
-            skills.append(self.ability['dex'])
-        if profs['arcana'] == 1:
-            skills.append(self.ability['int'] + bonus)
-        else:
-            skills.append(self.ability['int'])
-        if profs['history'] == 1:
-            skills.append(self.ability['int'] + bonus)
-        else:
-            skills.append(self.ability['int'])
-        if profs['investigation'] == 1:
-            skills.append(self.ability['int'] + bonus)
-        else:
-            skills.append(self.ability['int'])
-        if profs['nature'] == 1:
-            skills.append(self.ability['int'] + bonus)
-        else:
-            skills.append(self.ability['int'])
-        if profs['religion'] == 1:
-            skills.append(self.ability['int'] + bonus)
-        else:
-            skills.append(self.ability['int'])
-        if profs['animal_handling'] == 1:
-            skills.append(self.ability['wis'] + bonus)
-        else:
-            skills.append(self.ability['wis'])
-        if profs['insight'] == 1:
-            skills.append(self.ability['wis'] + bonus)
-        else:
-            skills.append(self.ability['wis'])
-        if profs['medicine'] == 1:
-            skills.append(self.ability['wis'] + bonus)
-        else:
-            skills.append(self.ability['wis'])
-        if profs['perception'] == 1:
-            skills.append(self.ability['wis'] + bonus)
-        else:
-            skills.append(self.ability['wis'])
-        if profs['survival'] == 1:
-            skills.append(self.ability['wis'] + bonus)
-        else:
-            skills.append(self.ability['wis'])
-        if profs['deception'] == 1:
-            skills.append(self.ability['cha'] + bonus)
-        else:
-            skills.append(self.ability['cha'])
-        if profs['intimidation'] == 1:
-            skills.append(self.ability['cha'] + bonus)
-        else:
-            skills.append(self.ability['cha'])
-        if profs['performance'] == 1:
-            skills.append(self.ability['cha'] + bonus)
-        else:
-            skills.append(self.ability['cha'])
-        if profs['persuasion'] == 1:
-            skills.append(self.ability['cha'] + bonus)
-        else:
-            skills.append(self.ability['cha'])
-        print(skills)
+        for skill, ability in skill_abilities.items():
+            ability_score = self.ability[ability]
+            modifier = (ability_score - 10) // 2
+            base_skill = modifier 
+            skills.append(base_skill + bonus if profs[skill] == 1 else base_skill)
         return skills
