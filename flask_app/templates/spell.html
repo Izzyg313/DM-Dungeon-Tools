@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='spell.css') }}">
+    <title>{{spell['name']}}</title>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>{{spell['name']}}</h1>
+        <p>Casting Time: {{spell['casting_time']}}</p>
+        <p>Duration: {{spell['duration']}}</p>
+        <p>Range: {{spell['range']}}</p>
+        <p>
+            Concentration: 
+            {%if spell['concentration'] == True%}
+                Yes
+            {%else%}
+                No
+            {%endif%}
+        </p>
+        <p>
+            Components:
+            {%for comp in spell['components']%}
+                {{comp}} 
+            {%endfor%}
+        </p>
+        <p>
+            Materials: {{spell['material']}}
+        </p>
+        <p>
+            Ritual: 
+            {%if spell['ritual'] == true%}
+                Can be cast as a ritual
+            {%else%}
+                Cannot be cast as a ritual
+            {%endif%}
+        </p>
+        <p>
+            {%if spell['school'] != null%}
+                School: {{spell['school']['name']}}</p>
+            {%endif%}
+        <p>
+            Classes: 
+            {%for class in spell['classes']%}
+                {{class['name']}}
+            {%endfor%}
+        </p>
+        <p>
+            {%for item in spell['desc']%}
+                {{item}}
+            {%endfor%}
+        </p>
+        {%if spell['higher_level']%}
+            <p>
+                At Higher Levels:
+                {%for item in spell['higher_level']%}
+                    {{item}}
+                {%endfor%}
+            </p>
+        {%endif%}
+    </div>
+</body>
+</html>
