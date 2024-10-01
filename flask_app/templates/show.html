@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='show.css') }}">
     <title>{{character['name']}}'s Page</title>
 </head>
 <body>
@@ -22,9 +23,15 @@
                 <p>Charisma: {{character.ability['cha']}}</p>
             </div>
         </div>
-        <div id="health">
-            <p>HP</p>
-            <p>{{character['hp']}}</p>
+        <div id="atts">
+            <div id="health">
+                <p>HP</p>
+                <p>{{character['hp']}}</p>
+            </div>
+            <div id="ac">
+                <p>AC</p>
+                <p>{{character['AC']}}</p>
+            </div>
         </div>
         <div id="profs">
             <div id="names">
