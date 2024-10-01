@@ -3,21 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Player</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='user.css') }}">
+    <title>New   
+Player</title>
 </head>
-<body>
-    <div id="wrapper">
-        <header><h1>Make A New Player</h1></header>
-        <form action="/user/create" method="post" enctype="multipart/form-data">
-            <div class="label">
-                <label for="username">Username:</label>
-            </div>
-            <div class="input">
-                <input type="text" name="username" required>
-            </div>
-            <input type="file" name="profile_picture" accept="image/*" required>
-            <button>Create Player</button>
-        </form>
-    </div>
-</body>
+    <body>
+        <div id="wrapper">
+            <h1>Make A New Player</h1>
+            <form action="/user/create" method="post" enctype="multipart/form-data">
+                <div class="label">
+                    <label for="username">Username:</label>
+                </div>
+                <div class="input">
+                    <input type="text" name="username" required>
+                </div>
+
+                <label for="profile_picture">Choose a Profile Picture:</label>
+                <input type="file" name="profile_picture" accept="image/*" required onchange="previewImage(event)">
+
+                <img id="image-preview" src="#" alt="Image Preview" style="display: none; max-width: 200px; margin-top: 10px;">   
+
+
+                <button>Create Player</button>
+            </form>
+        </div>
+
+        <script>
+            function previewImage(event) {
+                var reader = new FileReader();
+                reader.onload = function(){
+                    var output = document.getElementById('image-preview');   
+
+                    output.src = reader.result;
+                    output.style.display = 'block';
+                }
+                reader.readAsDataURL(event.target.files[0]);
+            }
+        </script>
+    </body>
 </html>

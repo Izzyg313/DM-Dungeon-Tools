@@ -19,10 +19,10 @@
             {% for user in users %}
             <a href="/user/login/{{user.id}}">
                 <div class="user">
-                    <p>{{ user.username }}</p>
                     <div class="profile-picture">
                         {{ user.html_profpic() | safe }}
                     </div>
+                    <p>{{ user.username }}</p>
                 </div>
             </a>
             {% endfor %}
