@@ -2,13 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   
     <title>Document</title>
 </head>
 <body>
-    <h1>Spells</h1>
-    {%for spell in spells['results']%}
-        <a href="/spell/{{spell['index']}}">{{spell['name']}}</a>
-    {%endfor%}
+    <h1>Spells</h1>   
+    <input type="text" id="searchInput" placeholder="Search spells...">
+    <ul id="spellList">
+        {% for spell in spells['results'] %}
+            <li>
+                <a href="/spell/{{ spell['index'] }}">{{ spell['name'] }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const spellList = document.getElementById('spellList');
+        const spellItems = spellList.querySelectorAll('li');
+        searchInput.addEventListener('keyup', (event) => {
+            const searchTerm = event.target.value.toLowerCase();
+            spellItems.forEach(item => {
+                const spellName = item.textContent.toLowerCase();
+                if (spellName.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

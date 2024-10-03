@@ -10,5 +10,4 @@ def get_spell(spell):
 @app.route('/spell/search')
 def find_spell():
     spells = dndAPI.all_spells()
-    print(spells)
     return render_template('spell_search.html', spells = spells)
